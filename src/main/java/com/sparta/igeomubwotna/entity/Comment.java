@@ -55,4 +55,5 @@ public class Comment extends Timestamped {
     public void update(String content) {
         this.content = content;
     }
+
 }
