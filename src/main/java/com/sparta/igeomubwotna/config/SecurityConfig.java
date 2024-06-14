@@ -64,16 +64,16 @@ public class SecurityConfig {
 
         // 기본 설정인 Session 방식은 사용하지 않고 JWT 방식을 사용하기 위한 설정
         http.sessionManagement((sessionManagement) ->
-            sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         );
 
         // 요청 권한 설정: 특정 URL 패턴에 대한 접근 권한을 설정
         http.authorizeHttpRequests((authorizeHttpRequests) ->
-            authorizeHttpRequests
-                .requestMatchers("/api/user/signup").permitAll() // 회원가입 요청 모두 접근 허가
-                .requestMatchers("/api/user/signin").permitAll() // 로그인 요청 모두 접근 허가
-                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**").permitAll()  // Swagger UI에 대한 접근 허용
-                .anyRequest().authenticated() // 그 외 모든 요청 인증처리
+                authorizeHttpRequests
+                        .requestMatchers("/api/user/signup").permitAll() // 회원가입 요청 모두 접근 허가
+                        .requestMatchers("/api/user/signin").permitAll() // 로그인 요청 모두 접근 허가
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-resources/**").permitAll()  // Swagger UI에 대한 접근 허용
+                        .anyRequest().authenticated() // 그 외 모든 요청 인증처리
         );
 
         // 필터 관리: JWT 인증 필터와 권한 부여 필터를 필터 체인에 추가
