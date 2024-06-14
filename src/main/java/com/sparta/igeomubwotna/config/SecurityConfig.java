@@ -46,7 +46,7 @@ public class SecurityConfig {
         // 이 필터는 JWT를 사용하여 인증을 처리하며, 인증 관리자를 설정
         JwtAuthenticationFilter filter = new JwtAuthenticationFilter(jwtUtil, userRepository);
         filter.setAuthenticationManager(authenticationManager(authenticationConfiguration));
-        filter.setFilterProcessesUrl("api/user/signin"); // 로그인 엔드포인트를 설정 (특정 작업을 수행하기 위해 서버에 요청을 보내는 url)
+        filter.setFilterProcessesUrl("/api/user/signin"); // 로그인 엔드포인트를 설정 (특정 작업을 수행하기 위해 서버에 요청을 보내는 url)
         return filter;
     }
 
